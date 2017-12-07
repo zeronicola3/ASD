@@ -1,3 +1,5 @@
+//package progetto_asd;
+
 public class Hashtable {
 
     private static int [] table;

@@ -1,3 +1,5 @@
+//package progetto_asd;
+
 public class Progetto {
 
     public Hashtable alfabeto = new Hashtable(255);
@@ -26,7 +28,12 @@ public class Progetto {
         //a.put(32,1);
         //System.out.println(a.get(31));
 
-        Progetto a = new Progetto("ciao mario");
+        //Progetto a = new Progetto("ciao mario");
+
+        Word a = new Word("ciaomario");
+        Word b = new Word("ciabama");
+
+        System.out.println(a.isGreaterThen(b));
 
     }
 }
