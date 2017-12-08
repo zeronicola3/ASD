@@ -1,4 +1,5 @@
-//package progetto_asd;
+import java.util.*;
+
 
 public class Progetto {
 
@@ -23,17 +24,13 @@ public class Progetto {
 
     }
 
+        
     public static void main(String args[]) {
-        //Hashtable a = new Hashtable(255);
-        //a.put(32,1);
-        //System.out.println(a.get(31));
 
-        //Progetto a = new Progetto("ciao mario");
+        Word ara = new Word("ciao mario ");
+        Word b = new Word("cimarr");
 
-        Word a = new Word("ciaomario");
-        Word b = new Word("ciabama");
-
-        System.out.println(a.isGreaterThen(b));
+        System.out.println(Word.isGreaterThen(ara,b));
 
     }
 }
