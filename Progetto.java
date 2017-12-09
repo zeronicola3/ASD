@@ -5,32 +5,32 @@ public class Progetto {
 
     public Hashtable alfabeto = new Hashtable(255);
     private final char blank = ' ';
+    private ArrayList words = new ArrayList<Word>();
 
     public Progetto(String t) {
-        char char_t[] = t.toCharArray();
-        int c;
-        for(int i=0; i<char_t.length; i++){
-            if(char_t[i] != blank) {
-                c = (int) char_t[i];
-                if(alfabeto.get(c) == 0) {
-                    alfabeto.put(c, 1);
-                    System.out.println( char_t[i] );
-                }
-            }
+        this.explodeString(t); 
+    }
+
+    public void explodeString(String str) {
+        Word wi;
+        int i = 0;
+    
+        while((i < str.length()) && (str.charAt(i) != blank)) {
+            i++;
         }
+        wi = new Word(str.substring(0,i));
+        words.add(wi);
+        System.out.println(str.substring(0,i));
+        i++;
+
+        if(i < str.length()) {
+            this.explodeString(str.substring(i));        
+        }   
     }
-
-    private void addAlfabeto() {
-
-    }
-
-        
+   
     public static void main(String args[]) {
 
-        Word ara = new Word("ciao mario ");
-        Word b = new Word("cimarr");
-
-        System.out.println(Word.isGreaterThen(ara,b));
-
+        Progetto a = new Progetto("mario mare emma mirai");
+        
     }
 }
