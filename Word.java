@@ -77,4 +77,8 @@ public class Word {
         }
         return 1;
     }
+
+    public String toString() {
+        return new String(word);
+    }
 }
