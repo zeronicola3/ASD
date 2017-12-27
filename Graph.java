@@ -3,25 +3,55 @@ import java.util.*;
 
 
 class Graph {
-    private Vertex[] V;
-    private Adjaction adj;
+    private List<Vertex> V = new ArrayList<Vertex>();
+    private List<Integer> heads = new ArrayList<Integer>(); 
 
-    public Graph(List<Word> w) {
-        int length = w.size();
-        V = new Vertex[length];
-        adj = new Adjaction(length);
-        for(int i=0; i<length; i++) {
-            V[i] = new Vertex(w.get(i));
+    public Graph() {
+        
+    }
+
+    public void addNode(Word a) {
+        Vertex v = new Vertex(a);
+        if(!hasNode(v)){
+            V.add(v);
+            System.out.println("Nodo " + a.toString() + " aggiunto al grafo!");
+            int c = 0;
+            if(heads.size() > 0){
+                for(int i=0; i<heads.size(); i++){
+                    Vertex v_tmp = V.get(heads.get(i));
+                    c = Word.isGreaterThen(v_tmp.content, v.content);
+
+                    if(c == 1) {
+                        v_tmp.addAdj(V.indexOf(v));
+                        V.set(heads.get(i), v_tmp);
+                        System.out.println(v_tmp.label + " -> " + a.toString());
+                    } else {
+                        //heads.add(V.indexOf(v));
+                    }
+                }   
+            } else {
+                heads.add(V.indexOf(v));
+            }
         }
-
     }
 
     public void removeVertex() {
 
     }
 
+    public boolean hasNode(Vertex a) {
+        Iterator<Vertex> itr = V.iterator();
+        while (itr.hasNext()) {
+            String l = itr.next().label;
+            if (l.equals(a.label)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public String toString() {
-        return Arrays.toString(V) + '\n' + adj.toString();
+        return V.toString() + '\n';
     }
 
  /*   public Vertex getVertex() {
@@ -29,15 +59,5 @@ class Graph {
    } */ 
 
   //  public Vertex
-
-/*
-    System.out.println(matrix.toString());//print empty matrix
-    ArrayList<Integer> row1 = new ArrayList<Integer>(Arrays.asList(1,2,3));
-    ArrayList<Integer> row2 = new ArrayList<Integer>(Arrays.asList(4,5,6));
-    ArrayList<Integer> row3 = new ArrayList<Integer>(Arrays.asList(7,8,9));
-    matrix.add(row1);
-    matrix.add(row2);
-    matrix.add(row3);
-    System.out.println(matrix.toString());
-*/
+  
 }

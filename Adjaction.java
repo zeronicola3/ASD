@@ -30,25 +30,42 @@ class Adjaction {
             }
         }
     } */
-/*
+
     public boolean hasAdjaction(int i, int j) {
-        return adj.get(i).contains(j);
+        Iterator<Integer> itr = adj[i].iterator();
+        while (itr.hasNext()) {
+            if (itr.next() == j) {
+                return true;
+            }
+        }
+        return false;
     }
 
+    public boolean hasInnerEdges(int i) {
+        for(int j=0; j<this.length; j++) {
+            if(j==i) {
+                continue;
+            } else if(hasAdjaction(j, i)) {
+                return false;   
+            }
+        }
+        return true;
+    }
+/*
     public List<Integer> outerEdges(int i) {
         return adj.get(i);
     }
-/*
+
     public List<Integer> inEdges(int i) {
-        List<Integer> edges = new List<Integer>();
-        for (int j = 0; j < n; j++) {
+        ArrayList<Integer> edges = new ArrayList<Integer>();
+        for (int j = 0; j < this.length; j++) {
             if (adj[j].contains(i)) {
                 edges.add(j);
             }
         }
         return edges;
-    } */
-
+    }
+*/
     public String toString() {
         String r = new String();
 

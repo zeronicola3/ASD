@@ -27,10 +27,14 @@ public class Progetto {
     public static void main(String args[]) {
 
         Progetto a = new Progetto();
-        List<Word> ws = a.explodeString("mario mare emma mirai emma");
+        List<Word> ws = a.explodeString("maremma mario mare emma mirai emma mira");
+        Graph G = new Graph();
 
-        System.out.println();
-        Graph G = new Graph(ws);
+        Iterator<Word> itr = ws.iterator();
+        while (itr.hasNext()) {
+            G.addNode(itr.next());
+        }
+
         System.out.println(G.toString());
     }
 }
