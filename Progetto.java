@@ -27,7 +27,9 @@ public class Progetto {
     public static void main(String args[]) {
 
         Progetto a = new Progetto();
-        List<Word> ws = a.explodeString("maremma mario mare emma mirai emma mira");
+        //List<Word> ws = a.explodeString("se nonna non era serena non si rasserenava no nonno");
+
+        List<Word> ws = a.explodeString("se nonna non era serena non si rasserenerava nonno ressa sera rene");
         Graph G = new Graph();
 
         Iterator<Word> itr = ws.iterator();
@@ -36,5 +38,7 @@ public class Progetto {
         }
 
         System.out.println(G.toString());
+
+        G.printAdj();
     }
 }

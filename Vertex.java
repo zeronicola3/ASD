@@ -11,8 +11,26 @@ class Vertex {
         this.content = w;
     }
 
-    public void addAdj(int index) {
-        this.adj.add(index);
+    public void addAdj(int idx) {
+        if(!adj.contains(idx)) {
+            adj.add(idx);
+        }
+    }
+
+    public void concatAdj(Vertex b){
+        ArrayList<Integer> ab = b.getAdj();
+        Iterator<Integer> itr3 = ab.iterator();
+        while (itr3.hasNext()) {
+            Integer x = itr3.next();
+            if(!adj.contains(x)) {
+                addAdj(new Integer(x));
+                System.out.println(toString() + x);
+            }
+        }
+    }
+
+    public ArrayList<Integer> getAdj() {
+        return this.adj;
     }
 
     public int[] getAdjArray(){

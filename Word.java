@@ -81,4 +81,19 @@ public class Word {
     public String toString() {
         return new String(word);
     }
+
+    public static int getParentage(Word a, Word b) {
+        int r = isGreaterThen(a,b);
+        System.out.println(a.toString() + " vs. " + b.toString());
+        if(r == 1) {
+            return 0;
+        } else {
+            r = isGreaterThen(b,a);
+            System.out.println(b.toString() + " vs. " + a.toString());
+            if( r == 1) {
+                return 1;
+            }
+        }
+        return -1;
+    }
 }
