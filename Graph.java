@@ -4,7 +4,7 @@ import java.util.*;
 
 class Graph {
     private List<Vertex> V = new ArrayList<Vertex>();
-    private List<Integer> heads = new ArrayList<Integer>(); 
+    public List<Vertex> heads = new ArrayList<Vertex>(); 
 
     public Graph() {
         
@@ -19,14 +19,14 @@ class Graph {
             int c = 0, i = 0, index = 0;
             if (heads.size() > 0) {
                 while (i < heads.size()) {
-                    Vertex v_tmp = V.get(heads.get(i));
+                    Vertex v_tmp = heads.get(i);
                     matchNodes(v_tmp, v);
                     i++;
                     //System.out.println(heads.toString());
                 }
                 //
             } else {
-                heads.add(getVertexId(v));
+                heads.add(v);
             }
             /*
             int c = 0, i = 0, index = 0;
@@ -81,53 +81,53 @@ class Graph {
             
         }
         int c = Word.getParentage(a.content, b.content);
-        int n = 0;
+        Vertex n;
         // a > b
         if (c == 0) {
-            ArrayList<Integer> a_adj = a.getAdj();
-            Iterator<Integer> itr1 = a_adj.iterator();
+            ArrayList<Vertex> a_adj = a.getAdj();
+            Iterator<Vertex> itr1 = a_adj.iterator();
 
             while (itr1.hasNext()) {
                 n = itr1.next();
-                matchNodes(b, V.get(n));
+                matchNodes(b, n);
             }
            // a.concatAdj(b);
-            a.addAdj(getVertexId(b));
+            a.addAdj(b);
             
           //  V.set(getVertexId(a), a);
-            System.out.println(a.toString() + " -> " + b.toString() + "  " + getVertexId(b));
+            System.out.println(a.toString() + " -> " + b.toString());
 
         } else if (c == 1) {
         
-            ArrayList<Integer> a_adj = a.getAdj();
-            Iterator<Integer> itr2 = a_adj.iterator();
+            ArrayList<Vertex> a_adj = a.getAdj();
+            Iterator<Vertex> itr2 = a_adj.iterator();
             while (itr2.hasNext()) {
                 n = itr2.next();
-                matchNodes(b, V.get(n));
+                matchNodes(b, n);
             }
            // b.concatAdj(a);
-            if((heads.indexOf(getVertexId(a)) != -1) && (heads.indexOf(getVertexId(b)) == -1)) {
-                heads.set(heads.indexOf(getVertexId(a)), getVertexId(b));
-            } else if(heads.indexOf(getVertexId(a)) != -1) {
-                heads.remove(heads.indexOf(getVertexId(a)));
-            } else if(heads.indexOf(getVertexId(b)) == -1) {
-                heads.add(getVertexId(b));
+            if((heads.contains(a)) && (!heads.contains(b))) {
+                heads.set(heads.indexOf(a), b);
+            } else if(heads.contains(a)) {
+                heads.remove(a);
+            } else if(!heads.contains(b)) {
+                heads.add(b);
             }
-            b.addAdj(getVertexId(a));
+            b.addAdj(a);
            // b.concatAdj(a);
-           // V.set(getVertexId(b), b);
+           // V.set(b, b);
 
-           System.out.println(b.toString() + " -> " + a.toString() + "  " + getVertexId(a));
+           System.out.println(b.toString() + " -> " + a.toString());
         } else if(c == -1) {
 
-            ArrayList<Integer> a_adj = a.getAdj();
-            Iterator<Integer> itr2 = a_adj.iterator();
+            ArrayList<Vertex> a_adj = a.getAdj();
+            Iterator<Vertex> itr2 = a_adj.iterator();
             while (itr2.hasNext()) {
                 n = itr2.next();
-                matchNodes(b, V.get(n));
+                matchNodes(b, n);
             }
-            if (heads.indexOf(getVertexId(b)) == -1) {
-                heads.add(getVertexId(b));
+            if (!heads.contains(b)) {
+                heads.add(b);
             }
         }
     }

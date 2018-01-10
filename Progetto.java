@@ -29,7 +29,7 @@ public class Progetto {
         Progetto a = new Progetto();
         //List<Word> ws = a.explodeString("se nonna non era serena non si rasserenava no nonno");
 
-        List<Word> ws = a.explodeString("se nonna non era serena non si rasserenerava nonno nonnose ressa sera rene");
+        List<Word> ws = a.explodeString("rasserenavanobo rasserenavano se nonna non era serena non si rasserenerava nonno nonnose ea ressa sera rene e");
         Graph G = new Graph();
 
         Iterator<Word> itr = ws.iterator();
@@ -40,5 +40,9 @@ public class Progetto {
         System.out.println(G.toString());
 
         G.printAdj();
+
+        Vertex ver = G.heads.get(0);
+        Dijkstra D = new Dijkstra(G, ver);
+        D.doDijsktra(G, ver);
     }
 }
