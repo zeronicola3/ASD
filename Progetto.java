@@ -29,7 +29,7 @@ public class Progetto {
         Progetto a = new Progetto();
         //List<Word> ws = a.explodeString("se nonna non era serena non si rasserenava no nonno");
 
-        List<Word> ws = a.explodeString("se nonna non era serena non si rasserenerava nonno ressa sera rene");
+        List<Word> ws = a.explodeString("se nonna non era serena non si rasserenerava nonno nonnose ressa sera rene");
         Graph G = new Graph();
 
         Iterator<Word> itr = ws.iterator();

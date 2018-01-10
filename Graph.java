@@ -57,6 +57,10 @@ class Graph {
         }
     }
 
+    public List<Vertex> getV() {
+        return V;
+    }
+
 
     public int getVertexId(Vertex a) {
         Iterator<Vertex> itr = V.iterator();
@@ -115,6 +119,13 @@ class Graph {
 
            System.out.println(b.toString() + " -> " + a.toString() + "  " + getVertexId(a));
         } else if(c == -1) {
+
+            ArrayList<Integer> a_adj = a.getAdj();
+            Iterator<Integer> itr2 = a_adj.iterator();
+            while (itr2.hasNext()) {
+                n = itr2.next();
+                matchNodes(b, V.get(n));
+            }
             if (heads.indexOf(getVertexId(b)) == -1) {
                 heads.add(getVertexId(b));
             }
